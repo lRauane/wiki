@@ -15,8 +15,8 @@ function App() {
     const { data } = await api.get(`repos/${currentRepo}`);
 
     if (data.id) {
-      const isValid = repos.find((repo) => repo.id === data.id);
-      if (isValid) {
+      const isValid = repos.find(repo => repo.id === data.id);
+      if (!isValid) {
         setRepos((prev) => [...prev, data]);
         setCurrentRepo("");
         return;
@@ -35,7 +35,7 @@ function App() {
 
       <Button onClick={handleSearchRepo} />
 
-      {repos.map((repo) => (
+      {repos.map(repo => (
         <ItemRepo repo={repo} />
       ))}
     </Container>
